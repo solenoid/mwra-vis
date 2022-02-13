@@ -9,14 +9,14 @@ TODO figure out what's the minimum needed here.
 Still need to figure out how to deal with `data-tmp/scrape.js` for the longer term.
 
 ```
-npm config --location=project set save-prefix=
+npm config --location=project set save-prefix= # TODO consider if global is better
 git init
 npm init # answer and edit package.json to preference
-npm install --save next react react-dom
-npm install --save-dev prettier
-npm install --save-dev typescript @types/react @types/node
-npm install --save-dev eslint eslint-config-next eslint-config-prettier
-# add in scripts section to package.json
+npm install --save next react react-dom # next and react
+npm install --save-dev prettier # prettier at known version
+npm install --save-dev typescript @types/react @types/node # typescript
+npm install --save-dev eslint eslint-config-next eslint-config-prettier # eslint
+npm install --save @emotion/react@^11 @emotion/styled@^11 # chakra ui
 mkdir -p src/pages
 touch src/pages/index.tsx # and put in contents from guide
 touch .prettierrc # and put in preference for prettier config
