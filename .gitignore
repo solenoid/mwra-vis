@@ -1,3 +1,7 @@
 /node_modules
 /.next
+# Until scraping is figured out just do it locally in an ignored folder
 /data-tmp
+
+# @see https://github.com/vercel/next.js/discussions/30815
+tsconfig.tsbuildinfo
