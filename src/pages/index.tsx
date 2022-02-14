@@ -20,7 +20,7 @@ function IndexPage() {
     if (csvUrl) {
       setUrl(csvUrl)
     }
-  }, [csvUrl])
+  }, [setUrl, csvUrl])
   const shapedData = parseCsvData(textData)
   return (
     <div>
@@ -41,7 +41,11 @@ function IndexPage() {
       {shapedData.length > 0 ? (
         <section>
           Data sourced from{' '}
-          <a target="_blank" href="https://www.mwra.com/biobot/biobotdata.htm">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.mwra.com/biobot/biobotdata.htm"
+          >
             biobot
           </a>{' '}
           using the data behind the graph.
