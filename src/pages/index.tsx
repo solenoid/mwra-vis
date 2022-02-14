@@ -5,13 +5,22 @@ import {
   Heading,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { useEffect } from 'react'
 import NorthernChart from 'src/components/NorthernChart'
 import SouthernChart from 'src/components/SouthernChart'
+import { useJsonApi } from 'src/loaders/json'
 import { useTextApi } from 'src/loaders/text'
 import { parseCsvData } from 'src/utils/csv'
 
 function IndexPage() {
-  const { textData } = useTextApi('/data/2022-02-12.csv')
+  const { jsonData } = useJsonApi('/data/latest.json')
+  const { textData, setUrl } = useTextApi('')
+  const csvUrl = jsonData?.latest
+  useEffect(() => {
+    if (csvUrl) {
+      setUrl(csvUrl)
+    }
+  }, [csvUrl])
   const shapedData = parseCsvData(textData)
   return (
     <div>

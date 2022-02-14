@@ -1,4 +1,4 @@
-/node_modules
+node_modules
 /.next
 # Until scraping is figured out just do it locally in an ignored folder
 /data-tmp

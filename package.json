@@ -2,12 +2,13 @@
   "name": "mwra-scrape-vis",
   "version": "0.0.1",
   "description": "Scrape data from MWRA and show 7 day moving average.",
+  "private": true,
   "author": {
     "name": "Erik Solen"
   },
   "license": "MIT",
   "scripts": {
-    "scrape": "./data-tmp/scrape.js data-tmp/MWRAData20220212-data.pdf public/2022-02-12.csv",
+    "scrape": "./script/scrape.js",
     "dev": "next dev -p 3333",
     "build": "next build",
     "start": "next start -p 3333",

@@ -1,0 +1,15 @@
+{
+  "name": "mwra-scrape-data",
+  "version": "0.0.1",
+  "description": "Scrape data from MWRA",
+  "type": "module",
+  "private": true,
+  "author": {
+    "name": "Erik Solen"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "3.2.0",
+    "pdf-table-extractor": "1.0.3"
+  }
+}
