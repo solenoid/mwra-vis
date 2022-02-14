@@ -5,8 +5,14 @@ import {
   Heading,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import NorthernChart from 'src/components/NorthernChart'
+import SouthernChart from 'src/components/SouthernChart'
+import { useTextApi } from 'src/loaders/text'
+import { parseCsvData } from 'src/utils/csv'
 
 function IndexPage() {
+  const { textData } = useTextApi('/data/2022-02-12.csv')
+  const shapedData = parseCsvData(textData)
   return (
     <div>
       <Breadcrumb
@@ -20,9 +26,20 @@ function IndexPage() {
           </BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      <Heading as="h1" size="2xl" marginY={3}>
-        Welcome
+      <Heading as="h1" size="xl" marginY={3}>
+        MWRA Data Vis
       </Heading>
+      {shapedData.length > 0 ? (
+        <section>
+          Data sourced from{' '}
+          <a target="_blank" href="https://www.mwra.com/biobot/biobotdata.htm">
+            biobot
+          </a>{' '}
+          using the data behind the graph.
+          <NorthernChart data={shapedData} />
+          <SouthernChart data={shapedData} />
+        </section>
+      ) : null}
     </div>
   )
 }
