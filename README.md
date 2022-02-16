@@ -33,7 +33,9 @@ git stash # if outstanding changes
 git switch gh-pages
 git reset --hard origin/main
 npm run build && npm run export
+rm -rf docs
 mv out docs
+touch docs/.nojekyll
 git add docs
 git commit -m "Build for gh-pages"
 git push --force-with-lease
