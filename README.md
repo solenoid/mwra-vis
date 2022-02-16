@@ -40,4 +40,5 @@ git add docs
 git commit -m "Build for gh-pages"
 git push --force-with-lease
 git switch main
+rm -rf docs
 ```
