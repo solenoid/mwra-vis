@@ -8,7 +8,7 @@ TODO figure out what's the minimum needed here.
 
 Still need to figure out how to deal with `data-tmp/scrape.js` for the longer term.
 
-```
+```zsh
 npm config --location=project set save-prefix= # TODO consider if global is better
 git init
 npm init # answer and edit package.json to preference
@@ -24,4 +24,17 @@ touch .eslintrc.json # and put in "next" and "prettier" for extends
 touch .gitignore # and put in common folders / files
 git add . # stage all of it
 git commit --message "Manual Setup for nextjs app"
+```
+
+## Deploying
+
+```zsh
+git stash # if outstanding changes
+git switch gh-pages
+git reset --hard origin/main
+npm run build && npm run export
+mv out dist
+git add dist
+git commit -m "Build for gh-pages"
+git switch main
 ```

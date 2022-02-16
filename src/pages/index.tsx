@@ -11,9 +11,11 @@ import { useJsonApi } from 'src/loaders/json'
 import { useTextApi } from 'src/loaders/text'
 import { parseCsvData } from 'src/utils/csv'
 
+const publicData = (pathPart: string) =>
+  `${process.env.NEXT_PUBLIC_BASE}/data/${pathPart}`
 function IndexPage() {
-  const { jsonData } = useJsonApi('/data/latest.json')
-  const { textData } = useTextApi('/data/latest.csv')
+  const { jsonData } = useJsonApi(publicData('latest.json'))
+  const { textData } = useTextApi(publicData('latest.csv'))
   const shapedData = parseCsvData(textData)
   return (
     <div>
