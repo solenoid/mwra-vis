@@ -1,5 +1,5 @@
 {
-  "name": "mwra-scrape-data",
+  "name": "mwra-scrape",
   "version": "0.0.1",
   "description": "Scrape data from MWRA",
   "type": "module",

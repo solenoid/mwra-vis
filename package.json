@@ -1,5 +1,5 @@
 {
-  "name": "mwra-scrape-vis",
+  "name": "mwra-vis",
   "version": "0.0.1",
   "description": "Scrape data from MWRA and show 7 day moving average.",
   "private": true,
