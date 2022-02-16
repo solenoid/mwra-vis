@@ -36,6 +36,6 @@ npm run build && npm run export
 mv out docs
 git add docs
 git commit -m "Build for gh-pages"
-git push
+git push --force-with-lease
 git switch main
 ```
