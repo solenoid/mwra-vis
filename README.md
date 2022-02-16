@@ -33,8 +33,9 @@ git stash # if outstanding changes
 git switch gh-pages
 git reset --hard origin/main
 npm run build && npm run export
-mv out dist
-git add dist
+mv out docs
+git add docs
 git commit -m "Build for gh-pages"
+git push
 git switch main
 ```
