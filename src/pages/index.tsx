@@ -5,7 +5,6 @@ import {
   Heading,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { useEffect } from 'react'
 import NorthernChart from 'src/components/NorthernChart'
 import SouthernChart from 'src/components/SouthernChart'
 import { useJsonApi } from 'src/loaders/json'
@@ -14,13 +13,7 @@ import { parseCsvData } from 'src/utils/csv'
 
 function IndexPage() {
   const { jsonData } = useJsonApi('/data/latest.json')
-  const { textData, setUrl } = useTextApi('')
-  const csvUrl = jsonData?.latest
-  useEffect(() => {
-    if (csvUrl) {
-      setUrl(csvUrl)
-    }
-  }, [setUrl, csvUrl])
+  const { textData } = useTextApi('/data/latest.csv')
   const shapedData = parseCsvData(textData)
   return (
     <div>
@@ -46,9 +39,9 @@ function IndexPage() {
             rel="noreferrer"
             href="https://www.mwra.com/biobot/biobotdata.htm"
           >
-            biobot
+            Biobot Data
           </a>{' '}
-          using the data behind the graph.
+          - samples submitted through {jsonData?.submitted}
           <NorthernChart data={shapedData} />
           <SouthernChart data={shapedData} />
         </section>

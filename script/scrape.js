@@ -34,13 +34,10 @@ const pdf = await fetch(`${PREFIX}${pdfName}`).then((res) => res.arrayBuffer())
 const pdfLocation = `${DATA_TMP}${pdfName}`
 await fs.writeFile(pdfLocation, Buffer.from(pdf))
 
-const csvName = pdfName.replace('.pdf', '.csv')
-const csvLocation = `${PUBLIC_DATA}${csvName}`
-
 await new Promise((resolve, reject) => {
   const success = async (d) => {
     await fs.writeFile(
-      csvLocation,
+      `${PUBLIC_DATA}latest.csv`,
       d.pageTables
         .map((page) => page.tables)
         .flat()
@@ -54,7 +51,11 @@ await new Promise((resolve, reject) => {
     await fs.writeFile(
       `${PUBLIC_DATA}latest.json`,
       JSON.stringify({
-        latest: `/data/${csvName}`,
+        from: `${PREFIX}${pdfName}`,
+        submitted: pdfName
+          .match(/(\d\d\d\d)(\d\d)(\d\d)/)
+          .slice(1, 4)
+          .join('-'),
       })
     )
     resolve()
