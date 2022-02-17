@@ -45,7 +45,7 @@ function IndexPage() {
       </Heading>
       {shapedData.length > 0 ? (
         <Box>
-          <Stack marginY={3} spacing={5}>
+          <Stack>
             <Text>
               Alternative data vis for the Massachusetts Water Resources
               Authority sourced from{' '}
@@ -78,8 +78,10 @@ function IndexPage() {
               </Slider>
             </Box>
             <Box paddingY={3}>
-              <NorthernChart maxY={maxY} data={shapedData} />
-              <SouthernChart maxY={maxY} data={shapedData} />
+              <Stack>
+                <NorthernChart maxY={maxY} data={shapedData} />
+                <SouthernChart maxY={maxY} data={shapedData} />
+              </Stack>
             </Box>
           </Flex>
         </Box>
