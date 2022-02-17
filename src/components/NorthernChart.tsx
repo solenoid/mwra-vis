@@ -2,10 +2,11 @@ import * as Plot from '@observablehq/plot'
 import PlotChart from 'src/components/PlotChart'
 
 type Props = {
+  maxY: number
   data: Array<any>
 }
 
-export default function NorthernChart({ data }: Props) {
+export default function NorthernChart({ maxY, data }: Props) {
   return data.length > 0 ? (
     <PlotChart
       options={{
@@ -13,15 +14,17 @@ export default function NorthernChart({ data }: Props) {
           type: 'utc',
           ticks: 40,
           tickFormat: '%b %y',
-          label: 'Sample Date',
+          label: 'Sample Date →',
+          labelOffset: 35,
         },
         y: {
-          domain: [0, 1500],
+          domain: [0, maxY],
           grid: true,
-          label: 'Northern Copies / mL',
+          label: '↑ North System Copies / mL',
         },
-        width: 1200,
-        height: 200,
+        width: 1000,
+        height: 250,
+        margin: 45,
         marks: [
           Plot.dot(data, {
             x: 'sampleDate',
@@ -35,7 +38,7 @@ export default function NorthernChart({ data }: Props) {
         ],
         style: {
           background: '#4444',
-          padding: '5px 10px 10px',
+          padding: '0 10px 10px',
         },
       }}
     />
