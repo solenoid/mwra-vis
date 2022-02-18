@@ -47,8 +47,8 @@ function IndexPage() {
         <Box>
           <Stack>
             <Text>
-              Alternative data vis for the Massachusetts Water Resources
-              Authority sourced from{' '}
+              Unofficial Alternative data vis for the Massachusetts Water
+              Resources Authority sourced from{' '}
               <Link
                 href="https://www.mwra.com/biobot/biobotdata.htm"
                 color="teal.500"
