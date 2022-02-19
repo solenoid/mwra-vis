@@ -48,16 +48,6 @@ await new Promise((resolve, reject) => {
         )
         .join('\n')
     )
-    await fs.writeFile(
-      `${PUBLIC_DATA}latest.json`,
-      JSON.stringify({
-        from: `${PREFIX}${pdfName}`,
-        submitted: pdfName
-          .match(/(\d\d\d\d)(\d\d)(\d\d)/)
-          .slice(1, 4)
-          .join('-'),
-      })
-    )
     resolve()
   }
 

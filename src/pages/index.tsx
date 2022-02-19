@@ -19,16 +19,16 @@ import NextLink from 'next/link'
 import { useState } from 'react'
 import NorthernChart from 'src/components/NorthernChart'
 import SouthernChart from 'src/components/SouthernChart'
-import { useJsonApi } from 'src/loaders/json'
 import { useTextApi } from 'src/loaders/text'
 import { parseCsvData } from 'src/utils/csv'
 
 const publicData = (pathPart: string) =>
   `${process.env.NEXT_PUBLIC_BASE}/data/${pathPart}`
 function IndexPage() {
-  const { jsonData } = useJsonApi(publicData('latest.json'))
   const { textData } = useTextApi(publicData('latest.csv'))
   const shapedData = parseCsvData(textData)
+  // in practice the last date is the max
+  const maxDate = shapedData[shapedData.length - 1]?.sampleDate
   const [maxY, setMaxY] = useState(1000)
   return (
     <div>
@@ -58,7 +58,7 @@ function IndexPage() {
                 <ExternalLinkIcon mx="2px" />
               </Link>
             </Text>
-            <Text>Samples submitted through {jsonData?.submitted}</Text>
+            <Text>Samples submitted through {maxDate}</Text>
           </Stack>
           <Flex>
             <Box padding={3}>
