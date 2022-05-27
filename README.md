@@ -1,5 +1,7 @@
 # MWRA Data Scrape and Vis
 
+Site available at https://solenoid.github.io/mwra-vis/
+
 ## Getting Started
 
 TODO figure out what's the minimum needed here.
