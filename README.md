@@ -28,6 +28,15 @@ git add . # stage all of it
 git commit --message "Manual Setup for nextjs app"
 ```
 
+## Latest Data
+
+```zsh
+npm run scrape
+git add public/data/
+git commit -m "latest data"
+git push
+```
+
 ## Deploying
 
 ```zsh
