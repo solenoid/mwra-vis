@@ -5,3 +5,5 @@ node_modules
 
 # @see https://github.com/vercel/next.js/discussions/30815
 tsconfig.tsbuildinfo
+
+.DS_Store

@@ -24,13 +24,15 @@ try {
   if (e.code !== 'EEXIST') throw e
 }
 
-let pdfName = ''
+let pdfPath = ''
 if (nameMatch) {
-  pdfName = nameMatch[1]
+  pdfPath = nameMatch[1]
 } else {
   process.exit(1)
 }
-const pdf = await fetch(`${PREFIX}${pdfName}`).then((res) => res.arrayBuffer())
+const pdf = await fetch(`${PREFIX}${pdfPath}`).then((res) => res.arrayBuffer())
+const pathParts = pdfPath.split('/')
+const pdfName = pathParts[pathParts.length - 1]
 const pdfLocation = `${DATA_TMP}${pdfName}`
 await fs.writeFile(pdfLocation, Buffer.from(pdf))
 
