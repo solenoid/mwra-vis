@@ -16,7 +16,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NorthernChart from 'src/components/NorthernChart'
 import SouthernChart from 'src/components/SouthernChart'
 import { useTextApi } from 'src/loaders/text'
@@ -29,6 +29,19 @@ function IndexPage() {
   const shapedData = parseCsvData(textData)
   // in practice the last date is the max
   const maxDate = shapedData[shapedData.length - 1]?.sampleDate
+  const maxX = new Date(maxDate).getTime()
+  const [minX, setMinX] = useState(0)
+  const [currentX, setCurrentX] = useState(50)
+  const [nearMaxX, setNearMaxX] = useState(100)
+  useEffect(() => {
+    if (shapedData[0]?.sampleDate) {
+      const minDate = shapedData[0].sampleDate
+      const nearMaxDate = shapedData[shapedData.length - 7]?.sampleDate
+      setMinX(new Date(minDate).getTime())
+      setCurrentX(new Date(minDate).getTime())
+      setNearMaxX(new Date(nearMaxDate).getTime())
+    }
+  }, [textData])
   const [maxY, setMaxY] = useState(1000)
   return (
     <div>
@@ -79,8 +92,32 @@ function IndexPage() {
             </Box>
             <Box paddingY={3}>
               <Stack>
-                <NorthernChart maxY={maxY} data={shapedData} />
-                <SouthernChart maxY={maxY} data={shapedData} />
+                <NorthernChart
+                  maxY={maxY}
+                  minX={currentX}
+                  maxX={maxX}
+                  data={shapedData}
+                />
+                <Slider
+                  aria-label="slider-ex-3"
+                  defaultValue={currentX}
+                  orientation="horizontal"
+                  // maxW="180"
+                  min={minX}
+                  max={nearMaxX}
+                  onChange={setCurrentX}
+                >
+                  <SliderTrack>
+                    <SliderFilledTrack />
+                  </SliderTrack>
+                  <SliderThumb />
+                </Slider>
+                <SouthernChart
+                  maxY={maxY}
+                  minX={currentX}
+                  maxX={maxX}
+                  data={shapedData}
+                />
               </Stack>
             </Box>
           </Flex>

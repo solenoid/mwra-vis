@@ -3,17 +3,20 @@ import PlotChart from 'src/components/PlotChart'
 
 type Props = {
   maxY: number
+  minX: number
+  maxX: number
   data: Array<any>
 }
 
-export default function NorthernChart({ maxY, data }: Props) {
+export default function NorthernChart({ maxY, minX, maxX, data }: Props) {
   return data.length > 0 ? (
     <PlotChart
       options={{
         x: {
+          domain: [minX, maxX],
           type: 'utc',
-          ticks: 40,
-          tickFormat: '%b %y',
+          ticks: 10,
+          // tickFormat: '%b %y',
           label: 'Sample Date →',
           labelOffset: 35,
         },
