@@ -4,19 +4,15 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_BASE: basePath,
   },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: basePath,
-        permanent: false,
-        basePath: false,
-      },
-    ]
-  },
   async exportPathMap() {
     const paths = {
-      '/': { page: '/' },
+      '/': {
+        page: '/',
+        // without the following query, was getting a bunch of warn noise locally
+        // warn  - Url '/' defines a query parameter '__nextDefaultLocale' that is missing in exportPathMap
+        // warn  - Url '/' defines a query parameter '__nextDataReq' that is missing in exportPathMap
+        query: { __nextDefaultLocale: 'en', __nextDataReq: null },
+      },
     }
     return paths
   },
