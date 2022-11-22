@@ -41,7 +41,9 @@ function IndexPage() {
       setCurrentX(new Date(minDate).getTime())
       setNearMaxX(new Date(nearMaxDate).getTime())
     }
-  }, [textData])
+    // textData is the real and important dependency,
+    // but without shapedData there is a useEffect Hook Warning
+  }, [textData, shapedData])
   const [maxY, setMaxY] = useState(1000)
   return (
     <div>
