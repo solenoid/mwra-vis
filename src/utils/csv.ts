@@ -4,14 +4,14 @@ const numberOrAbsent = (
   inName: string,
   outName: string,
   input: { [key: string]: string }
-) =>
-  input[inName] && input[inName] !== ''
-    ? { [outName]: Number(input[inName]) }
-    : {}
+) => (input[inName] ? { [outName]: Number(input[inName]) } : {})
 
 const parseDate = (date: string) => {
   const [month, day, year] = date.split('/')
-  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+  // Until Temporal is around rely on:
+  // > Date-only strings (e.g. "1970-01-01") are treated as UTC,
+  // > while date - time strings(e.g. "1970-01-01T12:00") are treated as local.
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00`
 }
 
 type rowType = {
