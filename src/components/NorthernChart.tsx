@@ -14,7 +14,7 @@ export default function NorthernChart({ maxY, minX, maxX, data }: Props) {
       options={{
         x: {
           domain: [minX, maxX],
-          type: 'utc',
+          type: 'time',
           ticks: 10,
           // tickFormat: '%b %y',
           label: 'Sample Date →',
