@@ -6,6 +6,8 @@ Site available at https://solenoid.github.io/mwra-vis/
 
 TODO figure out what's the minimum needed here.
 
+This work folded into the [demo](https://github.com/solenoid/demo) repo which is where it is carried foward.
+
 ## Initial Bootstrap
 
 Still need to figure out how to deal with `data-tmp/scrape.js` for the longer term.
